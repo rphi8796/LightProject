@@ -130,6 +130,7 @@ public class LightPanel extends JPanel
 	
 	private void refresh()
 	{
+		
 		if (rowOne.get(0) == 0)
 		{
 			oneOne.setBackground(Color.GRAY);
@@ -209,6 +210,24 @@ public class LightPanel extends JPanel
 		else
 		{
 			threeThree.setBackground(Color.WHITE);
+		}
+		
+		int total = 0;
+		for (int nums : rowOne)
+		{
+			total += nums;
+		}
+		for (int nums : rowTwo)
+		{
+			total += nums;
+		}
+		for (int nums : rowThree)
+		{
+			total += nums;
+		}
+		if(total == 0)
+		{
+			JOptionPane.showMessageDialog(null, "YOU WIN!!");
 		}
 	}
 	
@@ -306,7 +325,76 @@ public class LightPanel extends JPanel
 			}
 		});
 		
+		twoOne.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent click) 
+			{
+				rowOne.set(0, change(rowOne.get(0)));
+				rowTwo.set(0, change(rowTwo.get(0)));
+				rowTwo.set(1, change(rowTwo.get(1)));
+				rowThree.set(0, change(rowThree.get(0)));
+				refresh();
+			}
+		});
 		
+		twoTwo.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent click) 
+			{
+				rowOne.set(1, change(rowOne.get(1)));
+				rowTwo.set(0, change(rowTwo.get(0)));
+				rowTwo.set(1, change(rowTwo.get(1)));
+				rowTwo.set(2, change(rowTwo.get(2)));
+				rowThree.set(1, change(rowThree.get(1)));
+				refresh();
+			}
+		});
+		
+		twoThree.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent click) 
+			{
+				rowOne.set(2, change(rowOne.get(2)));
+				rowTwo.set(1, change(rowTwo.get(1)));
+				rowTwo.set(2, change(rowTwo.get(2)));
+				rowThree.set(2, change(rowThree.get(2)));
+				refresh();
+			}
+		});
+		
+		threeOne.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent click) 
+			{
+				rowTwo.set(0, change(rowTwo.get(0)));
+				rowThree.set(0, change(rowThree.get(0)));
+				rowThree.set(1, change(rowThree.get(1)));
+				refresh();
+			}
+		});
+		
+		threeTwo.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent click) 
+			{
+				rowTwo.set(1, change(rowTwo.get(1)));
+				rowThree.set(0, change(rowThree.get(0)));
+				rowThree.set(1, change(rowThree.get(1)));
+				rowThree.set(2, change(rowThree.get(2)));
+				refresh();
+			}
+		});
+		
+		threeThree.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent click) 
+			{
+				rowTwo.set(2, change(rowTwo.get(2)));
+				rowThree.set(1, change(rowThree.get(1)));
+				rowThree.set(2, change(rowThree.get(2)));
+				refresh();
+			}
+		});
 		
 		
 		startButton.addActionListener(new ActionListener() 
